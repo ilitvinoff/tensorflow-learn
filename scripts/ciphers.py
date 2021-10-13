@@ -26,6 +26,8 @@ seq_model = tf.keras.Sequential(
     ]
 )
 
+
+
 if __name__ == '__main__':
     (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
 
@@ -34,3 +36,22 @@ if __name__ == '__main__':
 
     x_train = np.expand_dims(x_train, axis=-1)
     x_test = np.expand_dims(x_test, axis=-1)
+
+    print("x_train.shape = ", x_train.shape)
+    print("y_train.shape = ", y_train.shape)
+    print("x_test.shape = ", x_test.shape)
+    print("y_test.shape = ", y_test.shape)
+
+    evaluate = False
+
+    if evaluate:
+        seq_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics='accuracy')
+
+        # label : 2
+        # one hot encoding : 2
+
+        # model training
+        seq_model.fit(x_train, y_train, batch_size=64, epochs=3, validation_split=0.2)
+
+        # Evaluation on test set
+        seq_model.evaluate(x_test, y_test, batch_size=64)

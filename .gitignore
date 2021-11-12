@@ -2,3 +2,7 @@ tf_venv/
 .idea/
 sign_dataset/
 scripts/__pycache__/
+report/
+online_course/Titanic
+online_course/Titanic.pdf
+online_course/__pycache__/
